@@ -1,0 +1,50 @@
+/* Tall scroll track — its height (minus 100vh) is the distance the user
+   scrolls through while the frame sticks to the viewport. */
+.wrapper {
+  position: relative;
+}
+
+/* Pinned viewport: stays fixed on screen for the whole scroll track above,
+   because `position: sticky` only escapes its container once the container's
+   bottom edge reaches `top`. translateZ(0) + will-change hint the browser to
+   promote this to its own compositor layer so scroll-driven repaints of the
+   canvas don't trigger layout/paint on the rest of the page. */
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  will-change: transform;
+  transform: translateZ(0);
+  /* previous palette: background: #0c0b09; */
+  background: #1f1f1f;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* previous palette: background: #0c0b09; color: #faf6ef; */
+  background: #1f1f1f;
+  color: #f8f6f2;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: center;
+  padding: 0 1.5rem 4rem;
+}

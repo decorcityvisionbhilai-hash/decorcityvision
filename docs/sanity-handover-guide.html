@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Decorcity Vision — Sanity CMS Handover Guide</title>
+<style>
+  @page { size: A4; margin: 22mm 18mm 20mm 18mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+    color: #1F1F1F;
+    line-height: 1.55;
+    font-size: 11.5pt;
+    margin: 0;
+  }
+  .sans { font-family: "Helvetica Neue", Arial, sans-serif; }
+  h1, h2, h3, h4 { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; color: #1F1F1F; }
+  h1 { font-size: 26pt; margin: 0 0 6pt; }
+  h2 {
+    font-size: 17pt;
+    margin: 0 0 10pt;
+    padding-bottom: 6pt;
+    border-bottom: 2.5pt solid #C8A96A;
+    color: #7A5C1E;
+  }
+  h3 { font-size: 13pt; margin: 18pt 0 6pt; color: #1F1F1F; }
+  h4 { font-size: 11.5pt; margin: 12pt 0 4pt; color: #7A5C1E; }
+  p { margin: 0 0 9pt; }
+  ul, ol { margin: 0 0 10pt; padding-left: 20pt; }
+  li { margin-bottom: 4pt; }
+  a { color: #7A5C1E; text-decoration: underline; }
+  code, .code {
+    font-family: "SF Mono", "Consolas", monospace;
+    background: #F8F6F2;
+    border: 1px solid #E5E0D5;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 10pt;
+  }
+  .section { page-break-before: always; }
+  .section:first-of-type { page-break-before: auto; }
+  .no-break { page-break-inside: avoid; }
+
+  /* Cover page */
+  .cover {
+    height: 250mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    page-break-after: always;
+  }
+  .cover .eyebrow {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 10pt;
+    color: #7A5C1E;
+    margin-bottom: 14pt;
+  }
+  .cover h1 { font-size: 34pt; margin-bottom: 10pt; }
+  .cover .accent { font-style: italic; color: #C8A96A; }
+  .cover .subtitle { font-size: 13pt; color: #555; max-width: 380pt; margin-top: 6pt; }
+  .cover .meta {
+    margin-top: 60pt;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 10pt;
+    color: #888;
+  }
+  .cover .divider { width: 60pt; height: 2px; background: #C8A96A; margin: 22pt 0; }
+
+  /* TOC */
+  .toc-list { list-style: none; padding-left: 0; }
+  .toc-list li {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px dotted #ccc;
+    padding: 4pt 0;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 11pt;
+  }
+  .toc-list .num { color: #7A5C1E; font-weight: 700; margin-right: 8pt; }
+
+  /* Callout boxes */
+  .box {
+    border-radius: 6px;
+    padding: 10pt 14pt;
+    margin: 10pt 0 14pt;
+    font-size: 10.5pt;
+  }
+  .box.tip { background: #F4F8F2; border-left: 4px solid #4a5943; }
+  .box.warn { background: #FBF3E9; border-left: 4px solid #C8A96A; }
+  .box.gap { background: #F5F0EA; border-left: 4px solid #999; }
+  .box .label { font-family: "Helvetica Neue", Arial, sans-serif; font-weight: 700; font-size: 9.5pt; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 4pt; }
+  .box.tip .label { color: #4a5943; }
+  .box.warn .label { color: #91731f; }
+  .box.gap .label { color: #666; }
+
+  /* Field table */
+  table.fields {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 8pt 0 16pt;
+    font-size: 10pt;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+  }
+  table.fields th {
+    background: #1F1F1F;
+    color: #F8F6F2;
+    text-align: left;
+    padding: 6pt 8pt;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  table.fields td {
+    border-bottom: 1px solid #eee;
+    padding: 6pt 8pt;
+    vertical-align: top;
+  }
+  table.fields tr:nth-child(even) td { background: #FAF8F4; }
+  .fname { font-family: "SF Mono", Consolas, monospace; font-weight: 700; color: #7A5C1E; white-space: nowrap; }
+  .badge {
+    display: inline-block;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 8pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.4px;
+  }
+  .badge.req { background: #f3dede; color: #a33; }
+  .badge.opt { background: #e6ede1; color: #4a5943; }
+
+  .section-meta {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 9.5pt;
+    color: #888;
+    margin-bottom: 4pt;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 2.5pt solid #C8A96A;
+    padding-bottom: 6pt;
+    margin-bottom: 4pt;
+  }
+  .section-header h2 { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .section-header .kind {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #888;
+  }
+  .step-list { counter-reset: step; list-style: none; padding-left: 0; }
+  .step-list > li {
+    counter-increment: step;
+    position: relative;
+    padding-left: 28pt;
+    margin-bottom: 10pt;
+  }
+  .step-list > li::before {
+    content: counter(step);
+    position: absolute;
+    left: 0; top: 0;
+    width: 18pt; height: 18pt;
+    border-radius: 50%;
+    background: #C8A96A;
+    color: white;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+    font-size: 9.5pt;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  footer.pagefoot { display: none; }
+</style>
+</head>
+<body>
+
+<!-- ============ COVER ============ -->
+<div class="cover">
+  <div class="eyebrow">Decorcity Vision · Content Management Handover</div>
+  <h1>Sanity CMS<br/><span class="accent">Handover Guide</span></h1>
+  <p class="subtitle">
+    A complete, plain-English guide to editing your website's content —
+    every section explained, every field defined, with step-by-step
+    instructions for the changes you'll make most often.
+  </p>
+  <div class="divider"></div>
+  <div class="meta">
+    Prepared for Decorcity Vision · decorcityvision.in<br/>
+    Studio: decorcityvision.sanity.studio<br/>
+    August 2026
+  </div>
+</div>
+
+<!-- ============ TABLE OF CONTENTS ============ -->
+<div class="section">
+<h2>Table of Contents</h2>
+<ul class="toc-list">
+  <li><span><span class="num">1.</span>What Is This, and Why Does It Matter to You</span></li>
+  <li><span><span class="num">2.</span>Getting In: Two Ways to Reach the Studio</span></li>
+  <li><span><span class="num">3.</span>The Golden Rule: Draft vs. Published, and Going Live</span></li>
+  <li><span><span class="num">4.</span>Finding Your Way Around the Studio</span></li>
+  <li><span><span class="num">5.</span>Site Settings — Your Business Card</span></li>
+  <li><span><span class="num">6.</span>Hero — The First Thing Everyone Sees</span></li>
+  <li><span><span class="num">7.</span>Budget Slider Settings</span></li>
+  <li><span><span class="num">8.</span>Trust Points</span></li>
+  <li><span><span class="num">9.</span>Services (Homepage Teaser)</span></li>
+  <li><span><span class="num">10.</span>Service Categories (Full Catalog)</span></li>
+  <li><span><span class="num">11.</span>Differentiators</span></li>
+  <li><span><span class="num">12.</span>Process Steps</span></li>
+  <li><span><span class="num">13.</span>Testimonials</span></li>
+  <li><span><span class="num">14.</span>Team Members</span></li>
+  <li><span><span class="num">15.</span>Projects</span></li>
+  <li><span><span class="num">16.</span>Gallery Images</span></li>
+  <li><span><span class="num">17.</span>FAQs</span></li>
+  <li><span><span class="num">18.</span>YouTube Videos</span></li>
+  <li><span><span class="num">19.</span>Job Openings (Careers Page)</span></li>
+  <li><span><span class="num">20.</span>Studio Locations — Not Yet Connected</span></li>
+  <li><span><span class="num">21.</span>Common Tasks, Step by Step</span></li>
+  <li><span><span class="num">22.</span>Good Habits and Things to Avoid</span></li>
+  <li><span><span class="num">23.</span>Troubleshooting</span></li>
+  <li><span><span class="num">24.</span>Quick Reference — All Fields at a Glance</span></li>
+</ul>
+</div>
+
+<!-- ============ 1. WHAT IS THIS ============ -->
+<div class="section">
+<h2>1. What Is This, and Why Does It Matter to You</h2>
+
+<p>
+Your website's text, photos, team members, service list, testimonials, and job
+postings are <em>not</em> hard-coded into the site anymore. They live in a
+separate, easy-to-use content system called <strong>Sanity</strong> — think of
+it as a private control panel for your website, similar in spirit to a
+WordPress admin panel, but built specifically around the way your site is
+designed today.
+</p>
+<p>
+This means: whenever you want to change a phone number, add a new team
+member's photo, post a new job opening, or add a new project to your
+portfolio, you don't need to ask a developer to edit code and redeploy the
+site. You log into Sanity Studio, make the change, hit <strong>Publish</strong>,
+and it appears on the live site — usually within a few seconds, with no page
+refresh needed for a visitor already on the page.
+</p>
+
+<div class="box tip">
+  <span class="label">Why this design choice</span>
+  Every piece of content in Sanity has a matching "fallback" value already
+  written into the website's code. If you ever leave a field blank, delete a
+  document, or something goes wrong with the connection, the site does not
+  break or show blank space — it simply shows the last-known good content
+  instead. You can experiment freely without fear of taking the site down.
+</div>
+
+<p>
+This document walks through <strong>every single content type</strong> in your
+Studio, explains what each one controls on the live website, defines every
+field in plain language, and gives you step-by-step instructions for the
+changes you're most likely to make. Keep it as your reference — you shouldn't
+need a developer for day-to-day content updates after reading this.
+</p>
+</div>
+
+<!-- ============ 2. GETTING IN ============ -->
+<div class="section">
+<h2>2. Getting In: Two Ways to Reach the Studio</h2>
+
+<p>You can edit your content from either of these two places — they show the
+exact same content and editing screens, just hosted in two different places:</p>
+
+<h3>Option A — On Sanity's own hosting (recommended for day-to-day use)</h3>
+<p>
+Go to <strong>https://decorcityvision.sanity.studio</strong> in any browser and
+log in with the account you set up (Google, GitHub, or email/password —
+whichever you chose during setup). This is the simplest way to get in without
+remembering anything about the website's address.
+</p>
+
+<h3>Option B — Embedded inside the website itself</h3>
+<p>
+Go to <strong>https://decorcityvision.in/studio</strong>. This is the identical
+Studio, running as a page on your own website. Useful if you want to jump
+straight from browsing the live site into editing it.
+</p>
+
+<div class="box tip">
+  <span class="label">Which one should I use?</span>
+  It doesn't matter — pick whichever is more convenient in the moment. Changes
+  made in one show up through the other immediately, because they both edit
+  the exact same underlying content.
+</div>
+</div>
+
+<!-- ============ 3. DRAFT VS PUBLISHED ============ -->
+<div class="section">
+<h2>3. The Golden Rule: Draft vs. Published, and Going Live</h2>
+
+<p>
+This is the single most important thing to understand about using the Studio.
+</p>
+<p>
+When you open a document and start typing, Sanity automatically saves your
+work every few seconds — but only as a <strong>draft</strong>. A draft is
+invisible to visitors on your website. Nothing changes on the live site until
+you click the green <strong>Publish</strong> button, usually in the top-right
+corner of the document panel.
+</p>
+
+<div class="step-list-wrap">
+<ol class="step-list">
+  <li><strong>Open</strong> the document you want to change from the menu on the left.</li>
+  <li><strong>Edit</strong> the field(s) you need — your typing auto-saves as a draft as you go, so you won't lose work if you close the tab by accident.</li>
+  <li><strong>Review</strong> your changes — scroll through the whole document once before publishing, especially if you touched several fields.</li>
+  <li><strong>Click Publish</strong> — this is the step that actually pushes your change live.</li>
+</ol>
+</div>
+
+<p>
+Once published, your website is set up to update <strong>live</strong> — any
+visitor who already has a page open will see the change appear automatically
+within a few seconds, with no need to refresh the page. This is powered by
+what's called Sanity's "Live Content API," which is already wired into every
+page.
+</p>
+
+<div class="box warn">
+  <span class="label">Good to know</span>
+  If, for any reason, the live-update connection isn't active (for example,
+  very old browsers, or a temporary network hiccup), the site is also set to
+  automatically re-check for fresh content at least once every 60 seconds and
+  on every new page visit. So worst case, a change is visible within a
+  minute — it is never stuck showing old content indefinitely.
+</div>
+</div>
+
+<!-- ============ 4. NAVIGATING THE STUDIO ============ -->
+<div class="section">
+<h2>4. Finding Your Way Around the Studio</h2>
+
+<p>
+The left-hand menu in the Studio is organized in two parts:
+</p>
+
+<h3>Pinned at the top — "Settings" documents (only one of each exists)</h3>
+<ul>
+  <li><strong>Site Settings</strong> — your business's core facts: phone numbers, address, hours, social links, and more.</li>
+  <li><strong>Hero</strong> — the big homepage banner at the very top of the site.</li>
+  <li><strong>Budget Slider Settings</strong> — the min/max/default values on the contact form's budget slider.</li>
+</ul>
+<p>
+These three are called <strong>singletons</strong> — there is exactly one of
+each, always. You cannot create a second "Site Settings" document, and you
+should never delete these three. If a field inside one of them feels
+intimidating, remember: leaving it blank simply keeps the website's built-in
+default for that one field (see the box below for the one exception).
+</p>
+
+<div class="box tip">
+  <span class="label">How blank fields behave</span>
+  For almost every field across the whole Studio: if you leave it blank, the
+  website quietly falls back to a sensible default that's already built into
+  the code — it will never show up blank or broken on the live site. This
+  applies even to grouped fields like Site Settings' "Studio Visiting Hours"
+  — you can fill in just the days and leave the opening/closing time blank,
+  and those two will still correctly show their defaults rather than
+  disappearing.
+</div>
+
+<h3>Below the divider — everything else (repeatable lists)</h3>
+<p>
+Below the three pinned settings, you'll find a list of content types where
+you can have <strong>many</strong> documents — Team Members, Projects, Gallery
+Images, Testimonials, and so on. Click a type in the menu to see the list of
+existing documents, then click <strong>+ Create new</strong> (usually top-right)
+to add another, or click an existing item to edit it.
+</p>
+
+<p>
+Most of these lists have an <strong>Order</strong> field (a plain number). The
+website displays these lists sorted by that number, smallest first. Use
+0, 1, 2, 3… to control exactly what order things appear in on the website —
+this is the main way you control sequencing anywhere in the Studio.
+</p>
+</div>
+
+<!-- ============ 5. SITE SETTINGS ============ -->
+<div class="section">
+<div class="section-header"><h2>5. Site Settings</h2><span class="kind">Singleton</span></div>
+<p class="section-meta">Controls: contact details and business info shown across the entire site — footer, contact form, structured data for Google, and more.</p>
+
+<p>
+This is the single most-referenced document in your whole Studio. Nearly
+every page pulls something from here: your phone numbers in the footer, the
+map on the contact form, your social media icons, and even the technical
+information Google reads about your business.
+</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">businessName</td><td>Your business's name, used in a few places behind the scenes.</td><td>Decorcity Vision</td></tr>
+<tr><td class="fname">logo</td><td>Uploaded logo image. <em>Not yet wired to replace the site's built-in logo files — see note below.</em></td><td>—</td></tr>
+<tr><td class="fname">phones</td><td>List of phone numbers. Shown in the footer and used for the "Call" buttons across the site. Add or remove entries freely.</td><td>+91 77460 53697</td></tr>
+<tr><td class="fname">emails</td><td>List of email addresses shown in the footer.</td><td>contact@decorcityvision.in</td></tr>
+<tr><td class="fname">address</td><td>Your full studio address, shown in the footer and the contact section.</td><td>Ashirwad Tiles Shop, Bhilai…</td></tr>
+<tr><td class="fname">latitude / longitude</td><td>Your studio's exact map coordinates. Used for structured data Google reads — doesn't change what's visually shown.</td><td>21.221, 81.341</td></tr>
+<tr><td class="fname">mapEmbedUrl</td><td>The real, live Google Map shown on your homepage's contact section. Get this from Google Maps → Share → Embed a map → copy the address inside <code>src="..."</code>.</td><td>https://www.google.com/maps/embed?…</td></tr>
+<tr><td class="fname">whatsappLink</td><td>Your WhatsApp link. Powers every "WhatsApp Karein" button on the entire site.</td><td>https://wa.link/io570m</td></tr>
+<tr><td class="fname">hours.days / open / close</td><td>Your studio's visiting hours, shown in the footer and contact section.</td><td>Roz Khula · 09:00 AM – 08:30 PM</td></tr>
+<tr><td class="fname">callAvailability</td><td>A short line describing phone/WhatsApp availability — separate from your studio's physical visiting hours above.</td><td>24x7 Phone &amp; WhatsApp Consultation</td></tr>
+<tr><td class="fname">serviceAreas</td><td>List of city names you actively serve — shown in the hero and structured data.</td><td>Bhilai, Durg, Rajnandgaon</td></tr>
+<tr><td class="fname">youtubeChannelUrl</td><td>Your YouTube channel link — powers the "YouTube Par Dekhein" button and the footer's YouTube icon.</td><td>https://youtube.com/@decorcityvision</td></tr>
+<tr><td class="fname">socialLinks.instagram</td><td>Your Instagram profile URL. <strong>Leave blank and the Instagram icon simply won't appear anywhere</strong> — it never shows a broken link.</td><td>https://instagram.com/yourpage</td></tr>
+<tr><td class="fname">socialLinks.facebook</td><td>Same as above, for Facebook.</td><td>https://facebook.com/yourpage</td></tr>
+<tr><td class="fname">careersEmail</td><td>Where resumes get sent from the Careers page's "Apply" buttons. Leave blank to just use the first email in the list above.</td><td>careers@decorcityvision.in</td></tr>
+<tr><td class="fname">developerCreditPrefix</td><td>The footer's small credit line — the text before the linked name.</td><td>Developed and managed by</td></tr>
+<tr><td class="fname">developerCreditName</td><td>The clickable name in that footer credit line.</td><td>Googlixlabs</td></tr>
+<tr><td class="fname">developerCreditUrl</td><td>Where that name links to.</td><td>https://googlixlabs.com</td></tr>
+<tr><td class="fname">seo.title / seo.description</td><td>Reserved for future use — not currently read by the site's page titles.</td><td>—</td></tr>
+<tr><td class="fname">seo.keywords</td><td>A list of extra search-engine keywords, added on top of the site's built-in list. Leave blank to just use the built-in list.</td><td>interior designer Bhilai</td></tr>
+</table>
+
+<div class="box gap">
+  <span class="label">Honest note</span>
+  The <span class="fname">logo</span> image field exists for future use but
+  isn't yet connected — the site currently uses its own logo files directly
+  from the code. If you want to be able to swap your logo from the Studio
+  without a developer, mention this to Googlixlabs and it's a quick addition.
+</div>
+</div>
+
+<!-- ============ 6. HERO ============ -->
+<div class="section">
+<div class="section-header"><h2>6. Hero</h2><span class="kind">Singleton</span></div>
+<p class="section-meta">Controls: the large banner at the very top of your homepage — the first thing every visitor sees.</p>
+
+<p>
+The homepage hero has two independent visual layers: a full-screen
+<strong>background</strong> photo behind everything, and a smaller
+<strong>panel</strong> in front of it that grows larger as the visitor
+scrolls. The panel can show either a short looping video or a second photo —
+you choose which with the "Expanding panel media type" field.
+</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">backgroundImage</td><td>The full-screen photo behind everything. Always a still photo.</td><td>Living room photo</td></tr>
+<tr><td class="fname">mediaType</td><td>Choose <strong>video</strong> or <strong>image</strong> for the panel in front. Selecting one hides the fields that don't apply.</td><td>video</td></tr>
+<tr><td class="fname">media <span class="badge opt">video mode</span></td><td>The looping video file for the panel — only shown when mediaType is "video".</td><td>a short .mp4</td></tr>
+<tr><td class="fname">mediaPoster <span class="badge opt">video mode</span></td><td>A still image shown for an instant while the video loads.</td><td>a frame from the video</td></tr>
+<tr><td class="fname">mediaImage <span class="badge opt">image mode</span></td><td>The panel's photo — only shown when mediaType is "image".</td><td>same or different photo</td></tr>
+<tr><td class="fname">eyebrow</td><td>The small tracked-out label above the big headline.</td><td>Decorcity Vision · Bhilai, Durg &amp; Rajnandgaon</td></tr>
+<tr><td class="fname">titleLead / titleAccent</td><td>The big headline, split in two: the plain part and the italic gold-colored part.</td><td>"Ghar Ho To" / "Aisa."</td></tr>
+<tr><td class="fname">scrollHint</td><td>Small text below the headline hinting the visitor should scroll.</td><td>Scroll Karke Kaam Dekhein</td></tr>
+<tr><td class="fname">badgeText</td><td>The small pill-shaped badge (currently mentioning Kerala).</td><td>Ab Kerala Mein Bhi Available</td></tr>
+<tr><td class="fname">subtitle</td><td>The paragraph of text below the headline.</td><td>Bhilai, Durg aur Rajnandgaon mein…</td></tr>
+<tr><td class="fname">galleryCtaLabel</td><td>Text on the white "view work" button.</td><td>Hamara Kaam Dekhein</td></tr>
+<tr><td class="fname">whatsappCtaLabel</td><td>Text on the green WhatsApp button.</td><td>WhatsApp Karein</td></tr>
+</table>
+
+<div class="box warn">
+  <span class="label">Important — video file size</span>
+  If you switch the panel to "video," keep the uploaded file small: under
+  roughly 5MB, 10–15 seconds, looping, 720p resolution. A heavy, unoptimized
+  video here will slow down the very first thing every visitor sees — this is
+  the same mistake that was previously fixed by removing a large hotlinked
+  video from the homepage. When in doubt, keep mediaType set to "image."
+</div>
+</div>
+
+<!-- ============ 7. BUDGET SLIDER ============ -->
+<div class="section">
+<div class="section-header"><h2>7. Budget Slider Settings</h2><span class="kind">Singleton</span></div>
+<p class="section-meta">Controls: the budget range slider on the contact form.</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">min</td><td>The lowest value the slider can be dragged to.</td><td>10,000</td></tr>
+<tr><td class="fname">max</td><td>The highest value.</td><td>25,00,000</td></tr>
+<tr><td class="fname">step</td><td>How much the value jumps by as the slider is dragged.</td><td>10,000</td></tr>
+<tr><td class="fname">defaultValue</td><td>Where the slider's handle sits when the page first loads.</td><td>5,00,000</td></tr>
+</table>
+<p>Values are shown on the site formatted automatically as "₹5 Lakh" style text — you don't need to type the ₹ symbol or the word "Lakh" yourself.</p>
+</div>
+
+<!-- ============ 8. TRUST POINTS ============ -->
+<div class="section">
+<div class="section-header"><h2>8. Trust Points</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the small icon-and-label badge grid on the "About" dark banner section (e.g. "500+ Homes Done," "ISO Certified").</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">icon</td><td>Pick from a fixed list of icon styles.</td><td>shield-check</td></tr>
+<tr><td class="fname">label</td><td>The text shown next to the icon.</td><td>10-Year Warranty</td></tr>
+<tr><td class="fname">order</td><td>Controls the position in the grid.</td><td>0, 1, 2…</td></tr>
+</table>
+
+<div class="box gap">
+  <span class="label">Honest note</span>
+  The icon choices are a fixed list matching icons already built into the
+  site's design (home, star, history, shield-check, award, rupee, phone-call,
+  palmtree). If you need an icon not on this list, ask Googlixlabs to add it
+  — it's a one-line code change.
+</div>
+</div>
+
+<!-- ============ 9. SERVICES ============ -->
+<div class="section">
+<div class="section-header"><h2>9. Services (Homepage Teaser)</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the concise 6-card service grid on the homepage. The full trade-by-trade list on the /services page is a separate collection — see Section 10.</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">icon</td><td>Pick from a fixed icon list matching the card's visual style.</td><td>sofa</td></tr>
+<tr><td class="fname">title</td><td>English title of the service.</td><td>Interior Design</td></tr>
+<tr><td class="fname">titleHi</td><td>Hindi title, shown alongside the English one in the contact form's dropdown.</td><td>इंटीरियर डिज़ाइन</td></tr>
+<tr><td class="fname">description</td><td>One-line description on the card.</td><td>Ghar ya office ka poora interior…</td></tr>
+<tr><td class="fname">swatch</td><td>Accent color strip at the top of the card — clay, gold, or moss.</td><td>clay</td></tr>
+<tr><td class="fname">order</td><td>Position in the grid.</td><td>0, 1, 2…</td></tr>
+</table>
+</div>
+
+<!-- ============ 10. SERVICE CATEGORIES ============ -->
+<div class="section">
+<div class="section-header"><h2>10. Service Categories (Full Catalog)</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the full trade-by-trade service list on the /services page (False Ceiling, Furniture Work, Civil Work, and so on), and the category groupings in the contact form's service dropdown.</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">category</td><td>The heading for this group of services.</td><td>False Ceiling</td></tr>
+<tr><td class="fname">swatch</td><td>Accent color for this group's card — clay, gold, or moss.</td><td>gold</td></tr>
+<tr><td class="fname">items</td><td>The bullet-point list of specific services under this category. Add or remove lines freely.</td><td>POP Ceiling, Gypsum Ceiling…</td></tr>
+<tr><td class="fname">order</td><td>Position among the other category cards.</td><td>0, 1, 2…</td></tr>
+</table>
+</div>
+
+<!-- ============ 11. DIFFERENTIATORS ============ -->
+<div class="section">
+<div class="section-header"><h2>11. Differentiators</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the dark "Sirf Design Nahi, Bharosa" section — the vertical timeline of reasons to choose you (3D previews, transparency, dedicated team, etc.).</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">icon</td><td>Pick from a fixed list: cuboid, ruler, eye, or users.</td><td>cuboid</td></tr>
+<tr><td class="fname">title</td><td>Short bold heading for this point.</td><td>3D Mein Dekhiye, Pehle Hi</td></tr>
+<tr><td class="fname">description</td><td>One or two sentences explaining the point.</td><td>Kaam shuru hone se pehle…</td></tr>
+<tr><td class="fname">order</td><td>Position in the vertical timeline.</td><td>0, 1, 2…</td></tr>
+</table>
+</div>
+
+<!-- ============ 12. PROCESS STEPS ============ -->
+<div class="section">
+<div class="section-header"><h2>12. Process Steps</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the numbered "Humara Process" section (Free Consultation → 3D Design → Execution → Handover).</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">number</td><td>The number shown in the circle badge. Type it as text so you have full control of formatting (e.g. "01").</td><td>01</td></tr>
+<tr><td class="fname">title</td><td>Step's short title.</td><td>Free Consultation</td></tr>
+<tr><td class="fname">description</td><td>One-sentence explanation.</td><td>Hum aapke site pe aake…</td></tr>
+<tr><td class="fname">order</td><td>Position left-to-right.</td><td>0, 1, 2, 3</td></tr>
+</table>
+</div>
+
+<!-- ============ 13. TESTIMONIALS ============ -->
+<div class="section">
+<div class="section-header"><h2>13. Testimonials</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the auto-scrolling customer review columns ("Real Log, Real Reviews").</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">name</td><td>Customer's real name.</td><td>Khushboo Bali</td></tr>
+<tr><td class="fname">quote</td><td>Their review, word for word.</td><td>"Mr Harish was always very…"</td></tr>
+<tr><td class="fname">rating</td><td>Star rating, 1 to 5. Shown as filled gold stars.</td><td>5</td></tr>
+<tr><td class="fname">order</td><td>Position in the scrolling columns.</td><td>0, 1, 2…</td></tr>
+</table>
+
+<div class="box warn">
+  <span class="label">Please read — this matters</span>
+  Only enter <strong>real</strong> reviews from <strong>real</strong> customers,
+  word for word. Fabricated testimonials are misleading to visitors, can
+  violate advertising standards, and — if ever noticed by a customer whose
+  name is misused — damage the trust this whole website is built to earn. If
+  you have new real reviews (Google, WhatsApp, in person), this is exactly
+  where they belong.
+</div>
+</div>
+
+<!-- ============ 14. TEAM MEMBERS ============ -->
+<div class="section">
+<div class="section-header"><h2>14. Team Members</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the staggered photo grid in the "Hamari Team" section.</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">name</td><td>The team member's real name. <span class="badge req">Required</span></td><td>K.K. Kushwaha</td></tr>
+<tr><td class="fname">role</td><td>Their job title. <span class="badge req">Required</span></td><td>Founder &amp; CEO</td></tr>
+<tr><td class="fname">photo</td><td>A real photo of them. <span class="badge req">Required</span></td><td>—</td></tr>
+<tr><td class="fname">order</td><td>Position in the staggered grid.</td><td>0, 1, 2…</td></tr>
+</table>
+
+<div class="box warn">
+  <span class="label">Please read — this matters</span>
+  Use only real employees' real names and real photos here. This section
+  exists specifically to build trust by showing the actual people a customer
+  will work with — placeholder or stock photos would undermine exactly that.
+  When someone leaves the team, remove their document; when someone joins,
+  add a new one.
+</div>
+</div>
+
+<!-- ============ 15. PROJECTS ============ -->
+<div class="section">
+<div class="section-header"><h2>15. Projects</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the case-study cards on the homepage ("Hamare Projects") and the full list on the /portfolio page.</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">title</td><td>Project name. Can be left blank — the card simply won't show a heading.</td><td>3BHK Full Home Makeover</td></tr>
+<tr><td class="fname">location</td><td>Where the project is. Can be left blank — the location line simply won't show. Projects located in Kerala automatically get a small palm-tree icon and a green accent color if the word "Kerala" appears here.</td><td>Nehru Nagar, Bhilai</td></tr>
+<tr><td class="fname">tags</td><td>Small pill labels under the title, describing what work was done. Can be left empty.</td><td>Modular Kitchen, Lighting</td></tr>
+<tr><td class="fname">images</td><td>One or more photos, shown as a swipeable carousel. <span class="badge req">At least 1 required</span></td><td>—</td></tr>
+<tr><td class="fname">featured</td><td>A checkbox labeled "Show in homepage teaser."</td><td>—</td></tr>
+<tr><td class="fname">order</td><td>Position in the list, and — see note below — currently also what actually decides the homepage teaser.</td><td>0, 1, 2…</td></tr>
+</table>
+
+<div class="box gap">
+  <span class="label">Honest note — please read</span>
+  The <span class="fname">featured</span> checkbox does not currently change
+  anything on the live site. The homepage's "Hamare Projects" teaser instead
+  simply shows the <strong>first three projects, sorted by the Order
+  field</strong> — regardless of whether "featured" is checked. The full,
+  complete list always appears on the /portfolio page regardless of Order or
+  featured. <br/><br/>
+  <strong>Practical takeaway:</strong> to control what shows on the homepage,
+  set the Order field (0, 1, 2) on the three projects you want to feature
+  there. If you'd like the checkbox to genuinely work as labeled, ask
+  Googlixlabs — it's a small, low-risk fix.
+</div>
+</div>
+
+<!-- ============ 16. GALLERY IMAGES ============ -->
+<div class="section">
+<div class="section-header"><h2>16. Gallery Images</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the filterable photo grid ("Ek Click Mein Sab Dekhein") on the homepage and /portfolio page.</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">title</td><td>Short label overlaid on the photo.</td><td>Modular Kitchen</td></tr>
+<tr><td class="fname">category</td><td><strong>Free text</strong> — type anything. The filter pills above the gallery ("All," "Kitchen," "Living Room"…) are generated automatically from whatever categories you've used across all your gallery photos.</td><td>Kitchen, or a brand-new one like "Custom Work"</td></tr>
+<tr><td class="fname">image</td><td>The photo itself. <span class="badge req">Required</span></td><td>—</td></tr>
+<tr><td class="fname">order</td><td>Position in the grid.</td><td>0, 1, 2…</td></tr>
+</table>
+
+<div class="box tip">
+  <span class="label">Adding a brand-new category</span>
+  There is no separate list of categories to manage anywhere — just type a
+  new word into the Category field of any photo (for example, "Custom Work"),
+  publish it, and a new filter pill with that exact name appears on the
+  gallery automatically. No developer needed, ever, for this.
+</div>
+</div>
+
+<!-- ============ 17. FAQS ============ -->
+<div class="section">
+<div class="section-header"><h2>17. FAQs</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the expandable question list ("Aapke Sawaal").</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">q</td><td>The question. <span class="badge req">Required</span></td><td>Kya consultation sach mein free hai?</td></tr>
+<tr><td class="fname">a</td><td>The answer, shown when the visitor taps the question to expand it.</td><td>Haan, bilkul…</td></tr>
+<tr><td class="fname">order</td><td>Position in the list. The first one is expanded by default when the page loads.</td><td>0, 1, 2…</td></tr>
+</table>
+</div>
+
+<!-- ============ 18. YOUTUBE VIDEOS ============ -->
+<div class="section">
+<div class="section-header"><h2>18. YouTube Videos</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the three video thumbnail cards ("Site Visits, Dekhiye Live").</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">title</td><td>Caption shown over the thumbnail. <span class="badge req">Required</span></td><td>3BHK Home Tour — Nehru Nagar</td></tr>
+<tr><td class="fname">thumbnail</td><td>The preview image for the card. <span class="badge req">Required</span></td><td>—</td></tr>
+<tr><td class="fname">url</td><td>Where clicking the card takes the visitor — usually your YouTube channel or a specific video link.</td><td>https://youtube.com/watch?v=…</td></tr>
+<tr><td class="fname">order</td><td>Position among the three cards. Only the first three (by Order) are shown, even if more exist.</td><td>0, 1, 2…</td></tr>
+</table>
+</div>
+
+<!-- ============ 19. JOB OPENINGS ============ -->
+<div class="section">
+<div class="section-header"><h2>19. Job Openings</h2><span class="kind">Collection</span></div>
+<p class="section-meta">Controls: the "Open Positions" section on the /careers page.</p>
+
+<table class="fields">
+<tr><th>Field</th><th>What it does</th><th>Example</th></tr>
+<tr><td class="fname">title</td><td>The role's name. <span class="badge req">Required</span></td><td>Interior Designer</td></tr>
+<tr><td class="fname">department</td><td>Pick from a fixed list, shown as a small badge on the card.</td><td>Design</td></tr>
+<tr><td class="fname">location</td><td>Where the role is based. Defaults to "Bhilai, Chhattisgarh" for new entries.</td><td>Bhilai, Chhattisgarh</td></tr>
+<tr><td class="fname">type</td><td>Full-time, Part-time, Internship, or Contract.</td><td>Full-time</td></tr>
+<tr><td class="fname">description</td><td>A short paragraph about the role.</td><td>Client requirements se lekar…</td></tr>
+<tr><td class="fname">requirements</td><td>Bullet-point list of what you're looking for. Add or remove lines freely.</td><td>1-3 saal ka relevant experience…</td></tr>
+<tr><td class="fname">active</td><td>Toggle off to hide a listing without deleting it — useful once a role is filled, in case you want to reopen it later.</td><td>On</td></tr>
+<tr><td class="fname">order</td><td>Position among the listed roles.</td><td>0, 1, 2…</td></tr>
+</table>
+
+<div class="box tip">
+  <span class="label">How "Apply" works</span>
+  Every job card's "Apply Karein" button opens the visitor's email app with
+  the role's name already filled into the subject line, addressed to your
+  Careers email (Site Settings → careersEmail). No separate application
+  system to manage — it's just a smart pre-filled email link.
+</div>
+</div>
+
+<!-- ============ 20. STUDIO LOCATIONS ============ -->
+<div class="section">
+<div class="section-header"><h2>20. Studio Locations</h2><span class="kind">Collection — Not Yet Connected</span></div>
+<p class="section-meta">Exists in the Studio menu, but has no effect on the live website today.</p>
+
+<div class="box gap">
+  <span class="label">Honest note — please read</span>
+  This collection was scaffolded for a future feature (managing multiple
+  studio locations as a flexible list) but the website's map section is
+  currently wired differently: the real, live Bhilai map comes from Site
+  Settings' <span class="fname">mapEmbedUrl</span> field (Section 5), and the
+  Kerala "Coming Soon" card is fixed directly in the site's code because
+  Kerala isn't open yet. <br/><br/>
+  <strong>Practical takeaway:</strong> creating documents here currently does
+  nothing visible — please don't spend time filling this in. If, down the
+  line, you open a second physical studio and want a dynamic, Studio-managed
+  list of locations instead of the current fixed setup, mention it to
+  Googlixlabs; the groundwork for this is already half-built.
+</div>
+</div>
+
+<!-- ============ 21. COMMON TASKS ============ -->
+<div class="section">
+<h2>21. Common Tasks, Step by Step</h2>
+
+<h3>Add a new team member</h3>
+<ol class="step-list">
+  <li>Open <strong>Team Members</strong> in the left menu, click <strong>+ Create new</strong>.</li>
+  <li>Fill in their real Name and Role.</li>
+  <li>Click the Photo field and upload a real photo of them.</li>
+  <li>Set an Order number one higher than your current last team member (e.g. if you have 6 members numbered 0–5, use 6).</li>
+  <li>Click <strong>Publish</strong>.</li>
+</ol>
+
+<h3>Add a new gallery photo, including a brand-new category</h3>
+<ol class="step-list">
+  <li>Open <strong>Gallery Images</strong>, click <strong>+ Create new</strong>.</li>
+  <li>Give it a short Title and upload the Image.</li>
+  <li>In Category, type a name — reuse an existing one (Kitchen, Bedroom, etc.) or type something brand new like "Custom Work."</li>
+  <li>Set an Order number.</li>
+  <li>Click <strong>Publish</strong> — the new category's filter pill appears on the site automatically.</li>
+</ol>
+
+<h3>Post a new job opening</h3>
+<ol class="step-list">
+  <li>Open <strong>Job Openings</strong>, click <strong>+ Create new</strong>.</li>
+  <li>Fill in Title, Department, Location, and Type.</li>
+  <li>Write a short Description and add a few Requirements as separate list items.</li>
+  <li>Leave Active switched on.</li>
+  <li>Click <strong>Publish</strong>.</li>
+</ol>
+<p>When the role is filled, open the document again and switch <strong>active</strong> off, then Publish — this removes it from the careers page without losing the content, in case you want to reopen it later.</p>
+
+<h3>Add your Instagram and Facebook links</h3>
+<ol class="step-list">
+  <li>Open <strong>Site Settings</strong>.</li>
+  <li>Scroll to <strong>Social links</strong>.</li>
+  <li>Paste your full Instagram profile URL and/or Facebook page URL.</li>
+  <li>Click <strong>Publish</strong> — the icons appear in the footer immediately; whichever one you leave blank simply won't show an icon.</li>
+</ol>
+
+<h3>Switch the homepage hero from a photo to a video</h3>
+<ol class="step-list">
+  <li>Open <strong>Hero</strong>.</li>
+  <li>Set "Expanding panel media type" to <strong>video</strong>.</li>
+  <li>Upload your video file to the "Panel video" field that appears (keep it small — see Section 6's warning).</li>
+  <li>Optionally upload a "Video poster frame" still image.</li>
+  <li>Click <strong>Publish</strong>.</li>
+</ol>
+
+<h3>Update your studio's visiting hours</h3>
+<ol class="step-list">
+  <li>Open <strong>Site Settings</strong> → Studio Visiting Hours.</li>
+  <li>Update Days, Open time, and/or Close time — you can fill in just one and leave the others as they are.</li>
+  <li>Click <strong>Publish</strong>.</li>
+</ol>
+</div>
+
+<!-- ============ 22. GOOD HABITS ============ -->
+<div class="section">
+<h2>22. Good Habits and Things to Avoid</h2>
+
+<ul>
+  <li><strong>Always click Publish.</strong> A saved draft is invisible to visitors — this trips people up more than anything else.</li>
+  <li><strong>Never delete Site Settings, Hero, or Budget Slider Settings.</strong> These three must always exist exactly once. If one is ever accidentally deleted, the site falls back to its built-in defaults everywhere that document was used, but it's best avoided.</li>
+  <li><strong>Keep Order numbers tidy.</strong> You don't need to renumber everything every time — gaps are fine (0, 5, 10) — just make sure the numbers sort in the order you actually want.</li>
+  <li><strong>Only real content for Testimonials and Team Members.</strong> See the honesty notes in Sections 13 and 14 — this is a trust issue, not just a style preference.</li>
+  <li><strong>Compress large photos before uploading</strong> when possible. Sanity handles resizing automatically for display, but a very large original (10MB+) still takes longer to upload and process.</li>
+  <li><strong>Use the "active" toggle instead of deleting</strong> for job openings you might reopen later — it's reversible, deleting isn't.</li>
+  <li><strong>When in doubt, leave it blank.</strong> Every field is designed to fall back gracefully to a safe default rather than break the site — you cannot break the live site by leaving something empty.</li>
+</ul>
+</div>
+
+<!-- ============ 23. TROUBLESHOOTING ============ -->
+<div class="section">
+<h2>23. Troubleshooting</h2>
+
+<h3>"I published a change, but I can't see it on the website"</h3>
+<ul>
+  <li>Confirm you clicked the green <strong>Publish</strong> button, not just closed the tab (a draft alone won't show).</li>
+  <li>Hard-refresh the page (Ctrl/Cmd + Shift + R) — this forces the browser to fetch the freshest version.</li>
+  <li>Wait up to 60 seconds — the site's safety-net refresh cycle guarantees it shows up within that window even in the rare case the instant live-update didn't fire.</li>
+</ul>
+
+<h3>"An image isn't showing on the site"</h3>
+<ul>
+  <li>Open the document and confirm the image actually finished uploading (you should see a preview thumbnail in the field, not a spinner or blank box).</li>
+  <li>Confirm you clicked Publish after uploading.</li>
+</ul>
+
+<h3>"A job/gallery photo/team member I deleted is still showing"</h3>
+<ul>
+  <li>In Sanity, deleting a document removes it immediately — if you still see it, it's very likely a caching/refresh issue. Hard-refresh the page.</li>
+</ul>
+
+<h3>"I see a weird error in the Studio itself"</h3>
+<ul>
+  <li>Try logging out and back in.</li>
+  <li>If it persists, take a screenshot of the exact error message and send it to Googlixlabs — most Studio-level errors are configuration issues that take minutes to fix, not content problems you caused.</li>
+</ul>
+</div>
+
+<!-- ============ 24. QUICK REFERENCE ============ -->
+<div class="section">
+<h2>24. Quick Reference — All Content Types at a Glance</h2>
+
+<table class="fields">
+<tr><th>Studio Section</th><th>Type</th><th>Controls on the Website</th></tr>
+<tr><td>Site Settings</td><td>Singleton</td><td>Contact info, hours, socials, footer credit — used everywhere</td></tr>
+<tr><td>Hero</td><td>Singleton</td><td>Homepage top banner (photo/video + headline)</td></tr>
+<tr><td>Budget Slider Settings</td><td>Singleton</td><td>Contact form's budget slider min/max/default</td></tr>
+<tr><td>Trust Points</td><td>Collection</td><td>Badge grid on the About banner</td></tr>
+<tr><td>Services</td><td>Collection</td><td>Homepage's 6-card service teaser</td></tr>
+<tr><td>Service Categories</td><td>Collection</td><td>Full catalog on /services + form dropdown groups</td></tr>
+<tr><td>Differentiators</td><td>Collection</td><td>"Sirf Design Nahi, Bharosa" timeline</td></tr>
+<tr><td>Process Steps</td><td>Collection</td><td>Numbered "Humara Process" section</td></tr>
+<tr><td>Testimonials</td><td>Collection</td><td>Scrolling review columns</td></tr>
+<tr><td>Team Members</td><td>Collection</td><td>Staggered team photo grid</td></tr>
+<tr><td>Projects</td><td>Collection</td><td>Case-study cards on homepage + /portfolio</td></tr>
+<tr><td>Gallery Images</td><td>Collection</td><td>Filterable photo grid</td></tr>
+<tr><td>FAQs</td><td>Collection</td><td>Expandable question list</td></tr>
+<tr><td>YouTube Videos</td><td>Collection</td><td>Three video thumbnail cards</td></tr>
+<tr><td>Job Openings</td><td>Collection</td><td>/careers "Open Positions"</td></tr>
+<tr><td>Studio Locations</td><td>Collection</td><td><em>Not yet connected — see Section 20</em></td></tr>
+</table>
+
+<p style="margin-top: 20pt; color: #888; font-size: 9.5pt; font-family: 'Helvetica Neue', Arial, sans-serif;">
+Decorcity Vision — Sanity CMS Handover Guide · Prepared by Googlixlabs · August 2026
+</p>
+</div>
+
+</body>
+</html>

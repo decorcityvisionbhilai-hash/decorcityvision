@@ -1,0 +1,1155 @@
+[
+  {
+    "fields": [
+      {
+        "initialValue": "Decorcity Vision",
+        "name": "businessName",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "logo",
+        "type": "image",
+        "title": "Logo mark"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "phones",
+        "type": "array",
+        "title": "Phone numbers"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "emails",
+        "type": "array",
+        "title": "Email addresses"
+      },
+      {
+        "rows": 2,
+        "name": "address",
+        "type": "text",
+        "title": "Studio address"
+      },
+      {
+        "name": "latitude",
+        "type": "number"
+      },
+      {
+        "name": "longitude",
+        "type": "number"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "The src= value from Google Maps' \"Embed a map\" share dialog for this business's real listing.",
+        "name": "mapEmbedUrl",
+        "type": "url",
+        "title": "Google Maps embed URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "whatsappLink",
+        "type": "url",
+        "title": "WhatsApp link (wa.link/wa.me)"
+      },
+      {
+        "fields": [
+          {
+            "initialValue": "Roz Khula",
+            "name": "days",
+            "type": "string"
+          },
+          {
+            "initialValue": "09:00 AM",
+            "name": "open",
+            "type": "string"
+          },
+          {
+            "initialValue": "08:30 PM",
+            "name": "close",
+            "type": "string"
+          }
+        ],
+        "name": "hours",
+        "type": "object",
+        "title": "Studio visiting hours"
+      },
+      {
+        "initialValue": "24x7 Phone & WhatsApp Consultation",
+        "name": "callAvailability",
+        "type": "string",
+        "title": "Phone/WhatsApp consultation availability"
+      },
+      {
+        "initialValue": [
+          "Bhilai",
+          "Durg",
+          "Rajnandgaon"
+        ],
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "serviceAreas",
+        "type": "array",
+        "title": "Cities actively served"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "youtubeChannelUrl",
+        "type": "url",
+        "title": "YouTube channel URL"
+      },
+      {
+        "description": "Leave a field blank to hide that icon everywhere on the site instead of showing a broken/placeholder link.",
+        "fields": [
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "uri",
+                    "constraint": {
+                      "options": {
+                        "scheme": [
+                          "/^http$/",
+                          "/^https$/"
+                        ],
+                        "allowRelative": false,
+                        "relativeOnly": false,
+                        "allowCredentials": false
+                      }
+                    }
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "instagram",
+            "type": "url",
+            "title": "Instagram URL"
+          },
+          {
+            "validation": [
+              {
+                "rules": [
+                  {
+                    "flag": "uri",
+                    "constraint": {
+                      "options": {
+                        "scheme": [
+                          "/^http$/",
+                          "/^https$/"
+                        ],
+                        "allowRelative": false,
+                        "relativeOnly": false,
+                        "allowCredentials": false
+                      }
+                    }
+                  }
+                ],
+                "level": "error"
+              }
+            ],
+            "name": "facebook",
+            "type": "url",
+            "title": "Facebook URL"
+          }
+        ],
+        "name": "socialLinks",
+        "type": "object",
+        "title": "Social links"
+      },
+      {
+        "description": "Falls back to the first general contact email if left blank.",
+        "name": "careersEmail",
+        "type": "string",
+        "title": "Careers email (resume applications)"
+      },
+      {
+        "initialValue": "Developed and managed by",
+        "name": "developerCreditPrefix",
+        "type": "string",
+        "title": "Footer developer credit — prefix text"
+      },
+      {
+        "initialValue": "Googlixlabs",
+        "name": "developerCreditName",
+        "type": "string",
+        "title": "Footer developer credit — company name (linked)"
+      },
+      {
+        "initialValue": "https://googlixlabs.com",
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "developerCreditUrl",
+        "type": "url",
+        "title": "Footer developer credit — link URL"
+      },
+      {
+        "fields": [
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "rows": 3,
+            "name": "description",
+            "type": "text"
+          },
+          {
+            "of": [
+              {
+                "type": "string"
+              }
+            ],
+            "name": "keywords",
+            "type": "array"
+          }
+        ],
+        "name": "seo",
+        "type": "object",
+        "title": "Default SEO"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "backgroundImage",
+        "type": "image",
+        "title": "Full-bleed background image"
+      },
+      {
+        "options": {
+          "list": [
+            "video",
+            "image"
+          ],
+          "layout": "radio"
+        },
+        "initialValue": "video",
+        "name": "mediaType",
+        "type": "string",
+        "title": "Expanding panel media type"
+      },
+      {
+        "options": {
+          "accept": "video/mp4,video/webm"
+        },
+        "description": "Keep this small — under ~5MB, 10-15s loop, 720p. A heavy video here will slow down the homepage's first paint the same way the old hotlinked one did. Only used when media type is \"video\".",
+        "hidden": "conditional",
+        "name": "media",
+        "type": "file",
+        "title": "Panel video"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Shown while the video loads — also improves perceived load speed.",
+        "hidden": "conditional",
+        "name": "mediaPoster",
+        "type": "image",
+        "title": "Video poster frame"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "description": "Only used when media type is \"image\".",
+        "hidden": "conditional",
+        "name": "mediaImage",
+        "type": "image",
+        "title": "Panel image"
+      },
+      {
+        "initialValue": "Decorcity Vision · Bhilai, Durg & Rajnandgaon",
+        "name": "eyebrow",
+        "type": "string"
+      },
+      {
+        "initialValue": "Ghar Ho To",
+        "name": "titleLead",
+        "type": "string"
+      },
+      {
+        "initialValue": "Aisa.",
+        "name": "titleAccent",
+        "type": "string"
+      },
+      {
+        "initialValue": "Scroll Karke Kaam Dekhein",
+        "name": "scrollHint",
+        "type": "string"
+      },
+      {
+        "initialValue": "Ab Kerala Mein Bhi Available",
+        "name": "badgeText",
+        "type": "string"
+      },
+      {
+        "rows": 2,
+        "initialValue": "Bhilai, Durg aur Rajnandgaon mein 500+ ghar aur office — khud aankhon se dekhiye.",
+        "name": "subtitle",
+        "type": "text"
+      },
+      {
+        "initialValue": "Hamara Kaam Dekhein",
+        "name": "galleryCtaLabel",
+        "type": "string"
+      },
+      {
+        "initialValue": "WhatsApp Karein",
+        "name": "whatsappCtaLabel",
+        "type": "string"
+      }
+    ],
+    "name": "hero",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "initialValue": 10000,
+        "name": "min",
+        "type": "number"
+      },
+      {
+        "initialValue": 2500000,
+        "name": "max",
+        "type": "number"
+      },
+      {
+        "initialValue": 10000,
+        "name": "step",
+        "type": "number"
+      },
+      {
+        "initialValue": 500000,
+        "name": "defaultValue",
+        "type": "number",
+        "title": "Default"
+      }
+    ],
+    "name": "budgetSettings",
+    "type": "document",
+    "title": "Budget Slider Settings"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "list": [
+            "home",
+            "star",
+            "history",
+            "shield-check",
+            "award",
+            "rupee",
+            "phone-call",
+            "palmtree"
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "home",
+                  "star",
+                  "history",
+                  "shield-check",
+                  "award",
+                  "rupee",
+                  "phone-call",
+                  "palmtree"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Key into the lucide-react icon map used by AboutBanner.tsx",
+        "name": "icon",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "label",
+        "type": "string"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "trustPoint",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "list": [
+            "sofa",
+            "chef-hat",
+            "wrench",
+            "lightbulb",
+            "paint-bucket",
+            "message-circle-question"
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "sofa",
+                  "chef-hat",
+                  "wrench",
+                  "lightbulb",
+                  "paint-bucket",
+                  "message-circle-question"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Key into the lucide-react icon map used by ServicesV2.tsx",
+        "name": "icon",
+        "type": "string"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Title (English)"
+      },
+      {
+        "name": "titleHi",
+        "type": "string",
+        "title": "Title (Hindi)"
+      },
+      {
+        "rows": 2,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "options": {
+          "list": [
+            "clay",
+            "gold",
+            "moss"
+          ]
+        },
+        "initialValue": "clay",
+        "name": "swatch",
+        "type": "string"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "service",
+    "type": "document",
+    "title": "Service (homepage teaser)"
+  },
+  {
+    "fields": [
+      {
+        "name": "category",
+        "type": "string",
+        "title": "Category name"
+      },
+      {
+        "options": {
+          "list": [
+            "clay",
+            "gold",
+            "moss"
+          ]
+        },
+        "initialValue": "clay",
+        "name": "swatch",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "items",
+        "type": "array",
+        "title": "Line items"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "serviceCategory",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "options": {
+          "list": [
+            "cuboid",
+            "ruler",
+            "eye",
+            "users"
+          ]
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "valid",
+                "constraint": [
+                  "cuboid",
+                  "ruler",
+                  "eye",
+                  "users"
+                ]
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "icon",
+        "type": "string"
+      },
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "differentiator",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "number",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "rows": 2,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "processStep",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "Customer name"
+      },
+      {
+        "rows": 4,
+        "name": "quote",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              },
+              {
+                "flag": "max",
+                "constraint": 5
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "rating",
+        "type": "number"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "testimonial",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "role",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "photo",
+        "type": "image"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "teamMember",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "location",
+        "type": "string"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tags",
+        "type": "array",
+        "title": "Service tags"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "min",
+                "constraint": 1
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "images",
+        "type": "array"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Show in homepage teaser"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "project",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Free text — the filter pills on the site's Photo Gallery are generated automatically from whatever categories exist here. Common ones so far: Kitchen, Living Room, Bedroom, Office, Exterior. Type a new one (e.g. \"Custom Work\") to add a new filter.",
+        "name": "category",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "image",
+        "type": "image"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "galleryImage",
+    "type": "document"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "q",
+        "type": "string",
+        "title": "Question"
+      },
+      {
+        "rows": 4,
+        "name": "a",
+        "type": "text",
+        "title": "Answer"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "faq",
+    "type": "document",
+    "title": "FAQ"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "name",
+        "type": "string",
+        "title": "Label"
+      },
+      {
+        "rows": 2,
+        "name": "address",
+        "type": "text"
+      },
+      {
+        "name": "latitude",
+        "type": "number"
+      },
+      {
+        "name": "longitude",
+        "type": "number"
+      },
+      {
+        "options": {
+          "list": [
+            "gold",
+            "moss"
+          ]
+        },
+        "initialValue": "gold",
+        "name": "accent",
+        "type": "string"
+      },
+      {
+        "initialValue": false,
+        "name": "comingSoon",
+        "type": "boolean",
+        "title": "Show as \"Coming Soon\" (no live map tiles)"
+      }
+    ],
+    "name": "locationStudio",
+    "type": "document",
+    "title": "Studio Location"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "thumbnail",
+        "type": "image"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "url",
+        "type": "url"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "youtubeVideo",
+    "type": "document",
+    "title": "YouTube Video"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            "Design",
+            "Site Execution",
+            "Sales & Consultation",
+            "Project Management",
+            "Carpentry & Furniture",
+            "Office & Admin"
+          ]
+        },
+        "name": "department",
+        "type": "string"
+      },
+      {
+        "initialValue": "Bhilai, Chhattisgarh",
+        "name": "location",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            "Full-time",
+            "Part-time",
+            "Internship",
+            "Contract"
+          ]
+        },
+        "initialValue": "Full-time",
+        "name": "type",
+        "type": "string"
+      },
+      {
+        "rows": 3,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "requirements",
+        "type": "array",
+        "title": "Requirements / what we're looking for"
+      },
+      {
+        "initialValue": true,
+        "description": "Turn off to hide this listing from /careers without deleting it.",
+        "name": "active",
+        "type": "boolean",
+        "title": "Currently open"
+      },
+      {
+        "initialValue": 0,
+        "name": "order",
+        "type": "number"
+      }
+    ],
+    "name": "jobOpening",
+    "type": "document"
+  }
+]
