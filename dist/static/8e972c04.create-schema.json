@@ -133,7 +133,8 @@
         "initialValue": [
           "Bhilai",
           "Durg",
-          "Rajnandgaon"
+          "Rajnandgaon",
+          "Raipur"
         ],
         "of": [
           {
@@ -358,7 +359,7 @@
         "title": "Panel image"
       },
       {
-        "initialValue": "Decorcity Vision · Bhilai, Durg & Rajnandgaon",
+        "initialValue": "Decorcity Vision · Bhilai, Durg, Rajnandgaon & Raipur",
         "name": "eyebrow",
         "type": "string"
       },
@@ -384,7 +385,7 @@
       },
       {
         "rows": 2,
-        "initialValue": "Bhilai, Durg aur Rajnandgaon mein 500+ ghar aur office — khud aankhon se dekhiye.",
+        "initialValue": "Bhilai, Durg, Rajnandgaon aur Raipur mein 500+ ghar aur office — khud aankhon se dekhiye.",
         "name": "subtitle",
         "type": "text"
       },

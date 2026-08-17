@@ -17,8 +17,12 @@ async function fetchLive(query: string) {
   return data;
 }
 
+// Singletons are pinned to a fixed document _id in sanity/structure.ts
+// (Studio's menu always opens/creates "siteSettings" / "hero" / "budgetSettings"
+// specifically) — querying by that same _id, not just _type, means this can
+// never accidentally pick up a stray duplicate document of the same type.
 export async function getSiteSettings() {
-  return fetchLive(`*[_type == "siteSettings"][0]{
+  return fetchLive(`*[_id == "siteSettings"][0]{
     businessName,
     "logo": logo.asset->url,
     phones,
@@ -42,7 +46,7 @@ export async function getSiteSettings() {
 }
 
 export async function getBudgetConfig() {
-  return fetchLive(`*[_type == "budgetSettings"][0]{
+  return fetchLive(`*[_id == "budgetSettings"][0]{
     min,
     max,
     step,
@@ -51,7 +55,7 @@ export async function getBudgetConfig() {
 }
 
 export async function getHero() {
-  return fetchLive(`*[_type == "hero"][0]{
+  return fetchLive(`*[_id == "hero"][0]{
     "backgroundImage": backgroundImage.asset->url,
     mediaType,
     "media": media.asset->url,
