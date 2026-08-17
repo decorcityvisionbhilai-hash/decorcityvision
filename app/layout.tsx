@@ -34,9 +34,9 @@ const inter = Inter({
 });
 
 const title =
-  "Decorcity Vision — Interior Designer & Furniture Manufacturer in Bhilai, Durg, Rajnandgaon";
+  "Decorcity Vision — Interior Designer & Furniture Manufacturer in Bhilai, Durg, Rajnandgaon, Raipur";
 const description =
-  "Decorcity Vision — interior designer, furniture manufacturer, modular kitchen dealer, painting studio and Vastu consultant serving Bhilai, Durg and Rajnandgaon since 2011. 500+ homes done, 10-year warranty, ISO certified, 24x7 phone consultation.";
+  "Decorcity Vision — interior designer, furniture manufacturer, modular kitchen dealer, painting studio and Vastu consultant serving Bhilai, Durg, Rajnandgaon and Raipur since 2011. 500+ homes done, 10-year warranty, ISO certified, 24x7 phone consultation.";
 
 // Async so the keywords list can come from Sanity's siteSettings.seo.keywords
 // when it's been filled in there — falls back to the static list otherwise.

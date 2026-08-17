@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Decorcity Vision — Interior Designer, Bhilai",
     short_name: "Decorcity Vision",
     description:
-      "Interior designer, furniture manufacturer and painting studio serving Bhilai, Durg and Rajnandgaon.",
+      "Interior designer, furniture manufacturer and painting studio serving Bhilai, Durg, Rajnandgaon and Raipur.",
     start_url: "/",
     display: "standalone",
     background_color: "#F8F6F2",

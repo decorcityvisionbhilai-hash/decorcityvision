@@ -34,7 +34,7 @@ export default function JsonLd({
     telephone: resolvedContact.phones[0],
     email: resolvedContact.emails[0],
     description:
-      "Interior designer, furniture manufacturer, painting studio and Vastu consultant serving Bhilai, Durg and Rajnandgaon since 2011.",
+      "Interior designer, furniture manufacturer, painting studio and Vastu consultant serving Bhilai, Durg, Rajnandgaon and Raipur since 2011.",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Decorcity Vision, Avantibai Chowk, near Ashirwad Tiles Shop, Kripal Nagar, Bhilai",

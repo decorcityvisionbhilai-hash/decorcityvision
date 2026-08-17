@@ -111,7 +111,7 @@ export default function InquiryV2({
                 {resolvedContact.callAvailability}
               </p>
               <p className="text-xs text-ink/70">
-                Bhilai, Durg aur Rajnandgaon — sabhi jagah service available.
+                Bhilai, Durg, Rajnandgaon aur Raipur — sabhi jagah service available.
               </p>
               <a
                 href={directionsUrl}

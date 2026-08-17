@@ -28,7 +28,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Decorcity Vision — Dekhiye Humara Kaam",
     description:
-      "Decorcity Vision — interior designer, furniture manufacturer aur modular kitchen dealer, Bhilai, Durg, Rajnandgaon & Kerala mein. 500+ ghar aur office ka kaam, photo aur video ke saath.",
+      "Decorcity Vision — interior designer, furniture manufacturer aur modular kitchen dealer, Bhilai, Durg, Rajnandgaon, Raipur & Kerala mein. 500+ ghar aur office ka kaam, photo aur video ke saath.",
     keywords: content.seoKeywords,
     alternates: { canonical: "/" },
   };

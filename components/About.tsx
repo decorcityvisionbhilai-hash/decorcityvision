@@ -33,8 +33,8 @@ export default function About({
             2011 Se, <span className="italic text-clayText">Ek Hi Mission.</span>
           </h2>
           <p className="mt-5 text-sm md:text-base text-ink/70 leading-relaxed">
-            2011 se Decorcity Vision, Bhilai, Durg aur Rajnandgaon ke ghar aur
-            offices ko smart aur khoobsurat spaces mein badal raha hai. Hamari
+            2011 se Decorcity Vision, Bhilai, Durg, Rajnandgaon aur Raipur ke
+            ghar aur offices ko smart aur khoobsurat spaces mein badal raha hai. Hamari
             team har project mein khud site pe involved rehti hai — pehle 3D
             design se lekar final handover tak — taaki aapki vision aur
             finished room ke beech kuch miss na ho.

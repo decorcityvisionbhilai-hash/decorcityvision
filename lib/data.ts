@@ -46,20 +46,20 @@ export const heroContent = {
   media: null as string | null,
   mediaPoster: null as string | null,
   mediaImage: "/hero/hero-bedroom.jpg",
-  eyebrow: "Decorcity Vision · Bhilai, Durg & Rajnandgaon",
+  eyebrow: "Decorcity Vision · Bhilai, Durg, Rajnandgaon & Raipur",
   titleLead: "Ghar Ho To",
   titleAccent: "Aisa.",
   scrollHint: "Scroll Karke Kaam Dekhein",
   badgeText: "Ab Kerala Mein Bhi Available",
   subtitle:
-    "Bhilai, Durg aur Rajnandgaon mein 500+ ghar aur office — khud aankhon se dekhiye.",
+    "Bhilai, Durg, Rajnandgaon aur Raipur mein 500+ ghar aur office — khud aankhon se dekhiye.",
   galleryCtaLabel: "Hamara Kaam Dekhein",
   whatsappCtaLabel: "WhatsApp Karein",
 };
 
 // Cities actively served beyond the Bhilai studio — surfaced in hero/about/footer
 // copy and in the LocalBusiness structured data's areaServed list.
-export const serviceAreas = ["Bhilai", "Durg", "Rajnandgaon"];
+export const serviceAreas = ["Bhilai", "Durg", "Rajnandgaon", "Raipur"];
 
 export const siteUrl = "https://decorcityvision.in";
 
@@ -74,6 +74,7 @@ export const seoKeywords = [
   "Interior designer Bhilai",
   "Interior designer Durg",
   "Interior designer Rajnandgaon",
+  "Interior designer Raipur",
   "Interior designer Chhattisgarh",
   "Interior Decorator",
   "Furniture Manufacturer",
@@ -85,14 +86,14 @@ export const seoKeywords = [
   "Modular kitchen designer Durg",
   "Painting studio",
   "Painting contractor Bhilai",
-  "House painting Durg Rajnandgaon",
+  "House painting Durg Rajnandgaon Raipur",
   "Vastu consultant",
   "Vastu consultant Bhilai",
   "Home health care service",
   "False ceiling contractor Bhilai",
   "POP and gypsum ceiling work",
   "Civil work contractor Chhattisgarh",
-  "Renovation contractor Bhilai Durg",
+  "Renovation contractor Bhilai Durg Raipur",
   "Office interior designer Bhilai",
   "3D interior design Bhilai",
   "Best interior designer near me",
@@ -132,6 +133,24 @@ export const seoKeywords = [
   "Modular home dealer Rajnandgaon",
   "Best interior designer in Rajnandgaon",
   "Office interior designer Rajnandgaon",
+
+  // Raipur — city-specific coverage
+  "Interior decorator Raipur",
+  "Furniture manufacturer Raipur",
+  "Modular kitchen dealer Raipur",
+  "False ceiling contractor Raipur",
+  "POP ceiling work Raipur",
+  "Civil work contractor Raipur",
+  "Painting contractor Raipur",
+  "Vastu consultant Raipur",
+  "Home renovation contractor Raipur",
+  "Modular home builder Raipur",
+  "Modular home dealer Raipur",
+  "Wardrobe and wall paneling work Raipur",
+  "Railing and window installation Raipur",
+  "Best interior designer in Raipur",
+  "Office interior designer Raipur",
+  "3D interior design Raipur",
 
   // Full service catalog — False Ceiling
   "POP false ceiling design",
@@ -342,7 +361,7 @@ export const categories = [
 export const trustPoints = [
   { icon: "home", label: "500+ Homes Done" },
   { icon: "star", label: "100% Happy Clients" },
-  { icon: "history", label: "15+ Years — Bhilai, Durg, Rajnandgaon" },
+  { icon: "history", label: "15+ Years — Bhilai, Durg, Rajnandgaon, Raipur" },
   { icon: "shield-check", label: "10-Year Warranty" },
   { icon: "award", label: "ISO Certified" },
   { icon: "rupee", label: "Fits Your Budget" },

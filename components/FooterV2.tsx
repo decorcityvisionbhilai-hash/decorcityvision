@@ -41,7 +41,7 @@ export default function FooterV2({
             <p className="max-w-sm text-sm leading-relaxed">
               We believe in creating a smart and efficient living environment for you.
               We endeavor to give our clients the satisfaction that they deserve. Proudly
-              serving Bhilai, Durg, Rajnandgaon and now Kerala.
+              serving Bhilai, Durg, Rajnandgaon, Raipur and now Kerala.
             </p>
             <p className="mt-6 flex items-center gap-2 text-sm text-cream/70">
               <Clock size={14} className="text-gold shrink-0" />

@@ -67,7 +67,7 @@ export default function AboutBanner({
           viewport={{ once: true }}
           className="font-display text-white text-3xl md:text-5xl leading-tight"
         >
-          2011 Se Bhilai, Durg Aur Rajnandgaon Mein, <span className="italic text-gold">Bharose Ke Saath.</span>
+          2011 Se Bhilai, Durg, Rajnandgaon Aur Raipur Mein, <span className="italic text-gold">Bharose Ke Saath.</span>
         </motion.h2>
 
         <motion.p

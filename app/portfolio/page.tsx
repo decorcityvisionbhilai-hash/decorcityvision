@@ -13,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Poora Portfolio — Decorcity Vision",
     description:
-      "Decorcity Vision ke sabhi completed interior design, furniture aur renovation projects — Bhilai, Durg, Rajnandgaon se Kerala tak, ek hi jagah.",
+      "Decorcity Vision ke sabhi completed interior design, furniture aur renovation projects — Bhilai, Durg, Rajnandgaon, Raipur se Kerala tak, ek hi jagah.",
     keywords: content.seoKeywords,
     alternates: { canonical: "/portfolio" },
   };

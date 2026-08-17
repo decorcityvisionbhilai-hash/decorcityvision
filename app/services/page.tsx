@@ -12,7 +12,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Poori Service List — Decorcity Vision",
     description:
-      "Decorcity Vision ke sabhi services — interior design, false ceiling, furniture, renovation, civil, paint, windows, railing aur decor — Bhilai, Durg aur Rajnandgaon mein.",
+      "Decorcity Vision ke sabhi services — interior design, false ceiling, furniture, renovation, civil, paint, windows, railing aur decor — Bhilai, Durg, Rajnandgaon aur Raipur mein.",
     keywords: content.seoKeywords,
     alternates: { canonical: "/services" },
   };

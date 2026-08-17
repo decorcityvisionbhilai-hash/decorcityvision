@@ -59,7 +59,7 @@ export default defineType({
       title: "Cities actively served",
       type: "array",
       of: [{ type: "string" }],
-      initialValue: ["Bhilai", "Durg", "Rajnandgaon"],
+      initialValue: ["Bhilai", "Durg", "Rajnandgaon", "Raipur"],
     }),
     defineField({ name: "youtubeChannelUrl", title: "YouTube channel URL", type: "url" }),
     defineField({
