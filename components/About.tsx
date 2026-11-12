@@ -91,7 +91,7 @@ export default function About({
         >
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl">
             <Image
-              src="/hero/DecorCity%20Vision%20Office%20Showcase.png"
+              src="/hero/about.jpeg"
               alt="DecorCity Vision office showcase"
               fill
               sizes="(min-width: 768px) 50vw, 100vw"
