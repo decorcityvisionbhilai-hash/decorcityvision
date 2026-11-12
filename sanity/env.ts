@@ -7,10 +7,10 @@ export const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2025-01
 // call to sanity/lib/queries.ts) should fail, with a clear message, when the
 // project isn't configured yet.
 export const dataset =
-  process.env.NEXT_PUBLIC_SANITY_DATASET || warnMissing("NEXT_PUBLIC_SANITY_DATASET");
+  process.env.NEXT_PUBLIC_SANITY_DATASET || process.env.SANITY_STUDIO_DATASET || warnMissing("NEXT_PUBLIC_SANITY_DATASET");
 
 export const projectId =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || warnMissing("NEXT_PUBLIC_SANITY_PROJECT_ID");
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || process.env.SANITY_STUDIO_PROJECT_ID || warnMissing("NEXT_PUBLIC_SANITY_PROJECT_ID");
 
 function warnMissing(name: string): string {
   if (typeof window === "undefined") {

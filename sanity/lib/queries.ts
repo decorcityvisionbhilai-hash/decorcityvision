@@ -115,8 +115,8 @@ export async function getGallery() {
 }
 
 export async function getProjects() {
-  return fetchLive(`*[_type == "project"] | order(order asc){
-    title, location, tags, "images": images[].asset->url
+  return fetchLive(`*[_type == "project"] | order(order asc, _createdAt desc){
+    title, location, tags, featured, "images": images[].asset->url
   }`);
 }
 

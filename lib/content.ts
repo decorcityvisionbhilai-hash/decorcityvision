@@ -16,9 +16,9 @@ async function safe<T>(promise: Promise<T>): Promise<T | null> {
   try {
     return await promise;
   } catch (err) {
-    if (process.env.NODE_ENV !== "production") {
-      console.warn("[sanity] fetch failed, using static fallback:", err);
-    }
+    // Log in production too, otherwise a broken Sanity connection just looks
+    // like "new content isn't showing up" (static fallback is used silently).
+    console.error("[sanity] fetch failed, using static fallback:", err);
     return null;
   }
 }

@@ -17,7 +17,11 @@ export default function ProjectsV2({
   whatsapp?: string;
 }) {
   const resolvedProjects = items && items.length > 0 ? items : staticProjects;
-  const projects = variant === "home" ? resolvedProjects.slice(0, FEATURED_PROJECTS_COUNT) : resolvedProjects;
+  // Homepage teaser: projects flagged "Show in homepage teaser" in Studio win;
+  // if none are flagged, fall back to the first few.
+  const flagged = resolvedProjects.filter((p) => (p as { featured?: boolean }).featured);
+  const teaserPool = flagged.length > 0 ? flagged : resolvedProjects;
+  const projects = variant === "home" ? teaserPool.slice(0, FEATURED_PROJECTS_COUNT) : resolvedProjects;
 
   return (
     <section
