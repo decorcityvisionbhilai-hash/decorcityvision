@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowRight, MessageCircle, ShieldCheck, PhoneCall } from "lucide-react";
-import { gallery as staticGallery, contact as staticContact, type GalleryItem } from "@/lib/data";
+import { contact as staticContact, type GalleryItem } from "@/lib/data";
 
 export default function About({
   image,
@@ -15,8 +15,6 @@ export default function About({
   whatsapp?: string;
   callAvailability?: string;
 }) {
-  const resolvedImage = image ?? staticGallery[3];
-
   return (
     <section id="about-us" className="bg-cream py-16 md:py-24">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 md:grid-cols-2 md:gap-16">
@@ -92,7 +90,13 @@ export default function About({
           className="relative"
         >
           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl">
-            <Image src={resolvedImage.image} alt={resolvedImage.title} fill className="object-cover" />
+            <Image
+              src="/hero/DecorCity%20Vision%20Office%20Showcase.png"
+              alt="DecorCity Vision office showcase"
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
           </div>
 
           <div className="absolute -bottom-6 -left-6 rounded-2xl bg-white p-6 shadow-lg sm:-left-10">
